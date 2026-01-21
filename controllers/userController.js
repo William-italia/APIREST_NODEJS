@@ -1,18 +1,18 @@
-const User = require("../models/User");
+const User = require('../models/User');
 
 const getUsers = async (req, res) => {
   try {
     const users = await User.findAll();
 
     if (users.length === 0) {
-      return res.status(200).json({ message: "Nenhum usuário cadastrado!" });
+      return res.status(200).json({ message: 'Nenhum usuário cadastrado!' });
     }
 
     res.status(200).json(users);
   } catch (error) {
     return res
       .status(500)
-      .json({ message: "Erro ao buscar os usuários", error: error.message });
+      .json({ message: 'Erro ao buscar os usuários', error: error.message });
   }
 };
 
@@ -22,13 +22,13 @@ const getUserById = async (req, res) => {
     if (!user) {
       return res
         .status(404)
-        .json({ message: "Usuário não encontrado no sistema!" });
+        .json({ message: 'Usuário não encontrado no sistema!' });
     }
     return res.status(200).json(user);
   } catch (error) {
     return res
       .status(500)
-      .json({ message: "Erro ao buscar usuário!", error: error.message });
+      .json({ message: 'Erro ao buscar usuário!', error: error.message });
   }
 };
 
@@ -38,7 +38,7 @@ const createUser = async (req, res) => {
     res.status(201).json(user);
   } catch (error) {
     return res.status(400).json({
-      message: "Não foi possivel criar o Usuário",
+      message: 'Não foi possivel criar o Usuário',
       error: error.message,
     });
   }
@@ -52,14 +52,14 @@ const updateUser = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: "Usuário não foi encontrado!",
+        message: 'Usuário não foi encontrado!',
       });
     }
 
     return res.status(200).json(user);
   } catch (error) {
     return res.status(400).json({
-      message: "Não foi possivel atualizar",
+      message: 'Não foi possivel atualizar',
       error: error.message,
     });
   }
@@ -73,14 +73,14 @@ const deleteUser = async (req, res) => {
 
     if (!user) {
       return res.status(400).json({
-        message: "Usuário não foi encontrado!",
+        message: 'Usuário não foi encontrado!',
       });
     }
 
-    res.status(200).json({ message: "Usuário deletado com sucesso!", user });
+    res.status(200).json({ message: 'Usuário deletado com sucesso!', user });
   } catch (error) {
     return res.status(500).json({
-      message: "Não foi possivel achar Usuário",
+      message: 'Não foi possivel achar Usuário',
       error: error.message,
     });
   }
